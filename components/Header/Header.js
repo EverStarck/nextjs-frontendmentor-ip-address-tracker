@@ -21,6 +21,15 @@ const HeaderFrame = styled.header`
       margin-top: 0;
     }
   }
+  /* MOBILE 375 */
+  @media screen and (max-width: 600px) {
+    height: 50vh;
+    background-position-x: 50%;
+    background-size: contain;
+    h1 {
+      font-size: 28px;
+    }
+  }
 `;
 
 export default function Header() {

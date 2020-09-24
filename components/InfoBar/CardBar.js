@@ -35,6 +35,28 @@ const Card = styled.article`
     /* position: absolute; */
     display: ${(props) => props.hrDisplay};
   }
+  /* IPAD */
+  @media screen and (max-width: 768px) {
+    padding: 20px 20px;
+    h4 {
+      font-size: 12px;
+    }
+    h2 {
+      font-size: 20px;
+      /* word-wrap: break-word; */
+    }
+  }
+  /* MOBILE 375 */
+  @media screen and (max-width: 375px) {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding: 0 12px;
+    h2 {
+      font-size: 18px;
+    }
+    &::after {display: none}
+  }
 `;
 
 export default function InfoBar({ text, hrDisplay="inline-block" }) {

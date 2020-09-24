@@ -27,6 +27,15 @@ const FormFrame = styled.form`
       }
     }
   }
+  /* MOBILE 375 */
+  @media screen and (max-width: 375px) {
+    .input-container {
+      width: 90vw;
+      input {
+        padding: 15px;
+      }
+    }
+  }
 `;
 
 export default function Input() {
