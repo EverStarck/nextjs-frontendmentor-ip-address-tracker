@@ -1,19 +1,14 @@
 import styled from "@emotion/styled";
 
 const Section = styled.section`
-  background: var(--Dark);
-  height: calc(100vh - 32vh);
-  color: #fff;
+  max-width: 100vw;
+  height: calc(100vh - 30vh);
   font-size: 50px;
-  margin-top: -100px;
-  /* IPAD */
-  @media screen and (max-width: 768px) {
-    height: calc(100vh - 28vh);
-  }
+  color: #fff;
+  background: var(--Dark);
   /* MOBILE 375 */
   @media screen and (max-width: 375px) {
-    height: calc(100vh - 27vh);
-    margin-top: -151px;
+    height: 100vh;
   }
 `;
 

@@ -2,15 +2,11 @@ import Input from './Input';
 import styled from "@emotion/styled";
 
 const HeaderFrame = styled.header`
-  overflow: hidden;
-  width: 100vw;
-  height: 32vh;
+  max-width: 100vw;
+  height: 30vh;
   background: var(--Dark);
   background-image: url(/../assets/images/pattern-bg.png);
   background-size: cover;
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
   .header-wrapper {
     text-align: center;
     padding: 40px 0 40px 0;

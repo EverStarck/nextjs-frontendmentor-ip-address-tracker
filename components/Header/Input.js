@@ -28,7 +28,7 @@ const FormFrame = styled.form`
     }
   }
   /* MOBILE 375 */
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 640px) {
     .input-container {
       width: 90vw;
       input {

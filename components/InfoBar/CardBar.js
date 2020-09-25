@@ -13,7 +13,7 @@ const Card = styled.article`
     margin-bottom: 0px;
     text-transform: uppercase;
     word-wrap: break-word;
-    font-size: 14px;
+    font-size: clamp(12px, 2vw, 14px);
   }
   h2 {
     color: var(--Dark);
@@ -21,7 +21,7 @@ const Card = styled.article`
     text-transform: uppercase;
     word-wrap: break-word;
     margin-top: 10px;
-    font-size: 32px;
+    font-size: clamp(18px, 2vw, 32px);
   }
   &::after {
     content: "";
@@ -29,37 +29,37 @@ const Card = styled.article`
     position: absolute;
     width: 1px;
     height: 80px;
-    top: 60px;
+    top: 40px;
     left: 10px;
     /* top: -50%; */
     /* position: absolute; */
     display: ${(props) => props.hrDisplay};
   }
-  /* IPAD */
-  @media screen and (max-width: 768px) {
+  /* Laptop */
+  @media screen and (max-width: 1024px) {
     padding: 20px 20px;
     h4 {
-      font-size: 12px;
+      word-wrap: normal;
     }
-    h2 {
-      font-size: 20px;
-      /* word-wrap: break-word; */
+  }
+  /* IPAD */
+  @media screen and (max-width: 768px) {
+    &::after {
+      top: 20px;
     }
   }
   /* MOBILE 375 */
   @media screen and (max-width: 375px) {
     text-align: center;
     width: 100%;
-    height: auto;
     padding: 0 12px;
-    h2 {
-      font-size: 18px;
+    &::after {
+      display: none;
     }
-    &::after {display: none}
   }
 `;
 
-export default function InfoBar({ text, hrDisplay="inline-block" }) {
+export default function InfoBar({ text, hrDisplay = "inline-block" }) {
   return (
     <>
       <Card hrDisplay={hrDisplay}>
