@@ -8,30 +8,19 @@ export default function Home({ initialData }) {
   const [ipValue, setIipValue] = useState("");
   const [data, setData] = useState(initialData);
   const [searchType, setSearchType] = useState("");
-  console.log(initialData);
+  const [errorApi, setErrorApi] = useState(false);
 
   const fetchNewData = async () => {
-    // Verify if t
-    if (ipValue === "") {
-      searchType("");
-    } else {
-      if (
-        /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(
-          ipValue
-        )
-      ) {
-        setSearchType("&ipAddress=");
-      } else {
-        setSearchType("&domain=");
-      }
-    }
     const req = await fetch(
       `https://geo.ipify.org/api/v1?apiKey=${process.env.API_TOKEN}${searchType}${ipValue}`
     );
-    // Change how to error work
-    const newData = await req.json();
-
-    setData(newData);
+    if (!req.ok) {
+      setErrorApi(true);
+    } else {
+      setErrorApi(false);
+      const newData = await req.json();
+      setData(newData);
+    }
   };
 
   return (
@@ -45,9 +34,10 @@ export default function Home({ initialData }) {
         ipValue={ipValue}
         setIipValue={setIipValue}
         fetchNewData={fetchNewData}
+        setSearchType={setSearchType}
       />
       <main>
-        <InfoBar data={data} />
+        <InfoBar data={data} errorApi={errorApi} />
         <Map />
       </main>
     </>
@@ -55,12 +45,13 @@ export default function Home({ initialData }) {
 }
 
 // This gets called on every request
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // Fetch data from external API
   const res = await fetch(
     `https://geo.ipify.org/api/v1?apiKey=${process.env.API_TOKEN}`
   );
   const initialData = await res.json();
+  console.log("ENV," + process.env.API_TOKEN);
   // Pass data to the page via props
   return { props: { initialData } };
 }

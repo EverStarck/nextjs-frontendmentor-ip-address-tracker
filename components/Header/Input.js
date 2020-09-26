@@ -46,8 +46,20 @@ const Error = styled.p`
   display: inline-block;
   transition: all .4s ease;
 `;
-export default function Input({ipValue, setIipValue, fetchNewData}) {
+export default function Input({ipValue, setIipValue, fetchNewData,setSearchType}) {
   const [error, setError] = useState(false);
+
+  const onChange = e => {
+    setIipValue(e.target.value);
+    // Verify if is a IP
+    if(ipValue === "") {
+      setSearchType("");
+    } else if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipValue)) {
+      setSearchType("&ipAddress=");
+    } else {
+      setSearchType("&domain=");
+    }
+  }
 
   const onSubmit = e => {
     e.preventDefault();
@@ -73,9 +85,10 @@ export default function Input({ipValue, setIipValue, fetchNewData}) {
           type="text"
           placeholder="Search for any IP address or domain"
           value={ipValue}
-          onChange={(e) => {
-            setIipValue(e.target.value);
-          }}
+          onChange={onChange}
+          // onChange={(e) => {
+          //   setIipValue(e.target.value);
+          // }}
           />
         <button type="submit">
           <img src="/../assets/images/icon-arrow.svg" alt="" srcSet="" />

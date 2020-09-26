@@ -30,7 +30,7 @@ const ErrorIPCss = styled.h1`
   color: #ff3333;
 `;
 
-export default function InfoBar({ data }) {
+export default function InfoBar({ data, errorApi }) {
   // 192.212.174.101
   const { ip, isp, location = "Invaid IP" } = data;
   const { city, country, timezone } = location;
@@ -50,8 +50,7 @@ export default function InfoBar({ data }) {
     );
   }
   function IpValidator() {
-    const testLocation = location;
-    if (testLocation === "Invaid IP") {
+    if (errorApi) {
       return <ErrorIPHtml />;
     }
     return <ValidIpAddress />;

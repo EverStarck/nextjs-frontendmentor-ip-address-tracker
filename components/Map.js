@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 const Section = styled.section`
   max-width: 100vw;
-  height: calc(100vh - 30vh);
+  height: calc(100vh - 32vh);
   font-size: 50px;
   color: #fff;
   background: var(--Dark);

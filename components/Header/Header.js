@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const HeaderFrame = styled.header`
   max-width: 100vw;
-  height: 30vh;
+  height: 32vh;
   background: var(--Dark);
   background-image: url(/../assets/images/pattern-bg.png);
   background-size: cover;
@@ -28,7 +28,7 @@ const HeaderFrame = styled.header`
   }
 `;
 
-export default function Header({ ipValue, setIipValue, fetchNewData }) {
+export default function Header({ ipValue, setIipValue, fetchNewData, setSearchType }) {
   return (
     <HeaderFrame>
       <div className="header-wrapper">
@@ -37,6 +37,7 @@ export default function Header({ ipValue, setIipValue, fetchNewData }) {
           ipValue={ipValue}
           setIipValue={setIipValue}
           fetchNewData={fetchNewData}
+          setSearchType={setSearchType}
         />
       </div>
     </HeaderFrame>
