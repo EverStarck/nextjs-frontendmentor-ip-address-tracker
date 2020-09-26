@@ -1,6 +1,7 @@
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 
-const FormFrame = styled.form`
+const FormFrame = styled.div`
   .input-container {
     width: 600px;
     display: flex;
@@ -14,16 +15,17 @@ const FormFrame = styled.form`
       font-size: 18px;
       color: var(--Dark);
     }
-    i {
+    button {
       display: flex;
       justify-content: center;
       align-items: center;
       background: var(--Dark);
       min-width: 80px;
       border-radius: 0 15px 15px 0;
+      border: none;
       cursor: pointer;
       &:hover {
-        opacity: .8;
+        opacity: 0.8;
       }
     }
   }
@@ -38,15 +40,48 @@ const FormFrame = styled.form`
   }
 `;
 
-export default function Input() {
+const Error = styled.p`
+  color: red;
+  background: #fff;
+  display: inline-block;
+  transition: all .4s ease;
+`;
+export default function Input({ipValue, setIipValue, fetchNewData}) {
+  const [error, setError] = useState(false);
+
+  const onSubmit = e => {
+    e.preventDefault();
+    // Validation
+    if (ipValue.trim() === "") {
+      setError(true);
+      return;
+    }
+    // Call to the API
+    fetchNewData();
+
+    // Delete the error state
+    setError(false);
+    setIipValue("");
+    // props.search(ipValue);
+  }
+
+
   return (
     <FormFrame>
-      <div className="input-container">
-        <input type="text" placeholder="Search for any IP address or domain" />
-        <i>
+      <form onSubmit={onSubmit} className="input-container">
+        <input
+          type="text"
+          placeholder="Search for any IP address or domain"
+          value={ipValue}
+          onChange={(e) => {
+            setIipValue(e.target.value);
+          }}
+          />
+        <button type="submit">
           <img src="/../assets/images/icon-arrow.svg" alt="" srcSet="" />
-        </i>
-      </div>
+        </button>
+      </form>
+      {error ? <Error>Complete the field</Error> : null}
     </FormFrame>
   );
 }

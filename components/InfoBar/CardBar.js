@@ -59,12 +59,12 @@ const Card = styled.article`
   }
 `;
 
-export default function InfoBar({ text, hrDisplay = "inline-block" }) {
+export default function InfoBar({ text, hrDisplay = "inline-block", data }) {
   return (
     <>
       <Card hrDisplay={hrDisplay}>
         <h4>{text}</h4>
-        <h2>192.212.174.101</h2>
+        <h2>{data}</h2>
       </Card>
     </>
   );

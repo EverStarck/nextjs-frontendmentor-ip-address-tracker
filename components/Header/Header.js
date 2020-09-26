@@ -1,4 +1,4 @@
-import Input from './Input';
+import Input from "./Input";
 import styled from "@emotion/styled";
 
 const HeaderFrame = styled.header`
@@ -28,12 +28,16 @@ const HeaderFrame = styled.header`
   }
 `;
 
-export default function Header() {
+export default function Header({ ipValue, setIipValue, fetchNewData }) {
   return (
     <HeaderFrame>
       <div className="header-wrapper">
         <h1>IP Address Tracker</h1>
-        <Input/>
+        <Input
+          ipValue={ipValue}
+          setIipValue={setIipValue}
+          fetchNewData={fetchNewData}
+        />
       </div>
     </HeaderFrame>
   );
