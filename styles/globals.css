@@ -20,3 +20,17 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.leaflet-container{
+  /* background: red; */
+  width: 100%;
+  height: calc(100vh - 32vh);
+  z-index: 1;
+}
+
+/* MOBILE 375 */
+@media screen and (max-width: 375px) {
+  .leaflet-container {
+    height: 100vh;
+  }
+}

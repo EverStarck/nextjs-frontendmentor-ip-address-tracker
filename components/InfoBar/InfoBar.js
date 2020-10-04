@@ -7,6 +7,7 @@ const SectionInfoBar = styled.section`
   justify-content: center;
   position: absolute;
   transform: translateY(-50%);
+  z-index: 2;
   .infoWrapper {
     width: 70vw;
     display: flex;

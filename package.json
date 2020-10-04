@@ -10,9 +10,11 @@
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
+    "leaflet": "^1.7.1",
     "next": "9.5.3",
     "normalize.css": "^8.0.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-leaflet": "^2.7.0"
   }
 }

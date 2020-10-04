@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Header from "../components/Header/Header";
 import InfoBar from "../components/InfoBar/InfoBar";
-import Map from "../components/Map";
+import dynamic from "next/dynamic";
+
+const MapWithNoSSR = dynamic(() => import("../components/MapComponent"), {
+  ssr: false,
+});
 
 export default function Home({ initialData }) {
   const [ipValue, setIipValue] = useState("");
@@ -38,7 +42,7 @@ export default function Home({ initialData }) {
       />
       <main>
         <InfoBar data={data} errorApi={errorApi} />
-        <Map />
+        <MapWithNoSSR data={data}/>
       </main>
     </>
   );
