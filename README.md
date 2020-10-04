@@ -1,6 +1,6 @@
 # Frontend Mentor - IP Address Tracker
 
-![Design preview for the IP Address Tracker coding challenge](./components/assets/design/desktop-preview.jpg)
+![Design preview for the IP Address Tracker coding challenge](/public/assets/design/desktop-preview.jpg)
 
 ## Welcome! 👋
 
